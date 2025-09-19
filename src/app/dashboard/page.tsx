@@ -106,12 +106,12 @@ export default function Dashboard() {
         <div className="bg-white shadow rounded-lg">
           <div className="px-4 py-5 sm:p-6">
             <h3 className="text-lg leading-6 font-medium text-gray-900">
-              Today's Performance
+              Today&apos;s Performance
             </h3>
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div className="bg-gray-50 px-4 py-5 rounded-lg">
                 <div className="text-sm font-medium text-gray-500">
-                  Today's Sales
+                  Today&apos;s Sales
                 </div>
                 <div className="mt-1 text-3xl font-semibold text-gray-900">
                   {stats ? formatKESSimple(stats.today_sales) : 'KSh 0'}
@@ -119,7 +119,7 @@ export default function Dashboard() {
               </div>
               <div className="bg-gray-50 px-4 py-5 rounded-lg">
                 <div className="text-sm font-medium text-gray-500">
-                  Today's Orders
+                  Today&apos;s Orders
                 </div>
                 <div className="mt-1 text-3xl font-semibold text-gray-900">
                   {stats?.today_orders || 0}

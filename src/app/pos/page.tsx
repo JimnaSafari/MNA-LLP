@@ -33,7 +33,7 @@ export default function POS() {
     try {
       const response = await api.get('/products');
       setProducts(response.data.data || response.data);
-    } catch (error) {
+    } catch {
       toast.error('Failed to fetch products');
     } finally {
       setLoading(false);
@@ -44,7 +44,7 @@ export default function POS() {
     try {
       const response = await api.get('/categories');
       setCategories(response.data.data || response.data);
-    } catch (error) {
+    } catch {
       console.error('Failed to fetch categories');
     }
   };
@@ -144,8 +144,11 @@ export default function POS() {
 
       clearCart();
       fetchProducts(); // Refresh products to update stock
-    } catch (error: any) {
-      toast.error(error.response?.data?.message || 'Failed to process order');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message || 'Failed to process order'
+        : 'Failed to process order';
+      toast.error(errorMessage);
     } finally {
       setProcessing(false);
     }

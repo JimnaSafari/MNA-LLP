@@ -27,8 +27,11 @@ export default function Login() {
       
       toast.success('Login successful!');
       router.push('/dashboard');
-    } catch (error: any) {
-      toast.error(error.response?.data?.message || 'Login failed');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message || 'Login failed'
+        : 'Login failed';
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }

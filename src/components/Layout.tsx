@@ -9,7 +9,6 @@ import {
   CubeIcon,
   TagIcon,
   ChartBarIcon,
-  UserIcon,
   ArrowRightOnRectangleIcon,
   Bars3Icon,
   XMarkIcon,
